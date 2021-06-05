@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supplier_settings",
+  "info": {
+    "name": "SupplierSettings",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "unique": true,
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "supplier_setting"
+    },
+    "storageName": {
+      "type": "string"
+    },
+    "uniqueHash": {
+      "type": "string",
+      "unique": true
+    },
+    "dropshipper_settings": {
+      "via": "supplier_settings",
+      "collection": "dropshipper-settings"
+    },
+    "header": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

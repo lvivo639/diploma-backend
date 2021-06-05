@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "product_orders",
+  "info": {
+    "name": "ProductOrder"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "product": {
+      "model": "product"
+    },
+    "count": {
+      "type": "integer"
+    },
+    "cart": {
+      "via": "product_orders",
+      "model": "cart"
+    }
+  }
+}

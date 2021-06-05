@@ -1,0 +1,60 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/dropshipper-settings",
+      "handler": "dropshipper-settings.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dropshipper-settings/count",
+      "handler": "dropshipper-settings.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/dropshipper-settings/:id",
+      "handler": "dropshipper-settings.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/dropshipper-settings",
+      "handler": "dropshipper-settings.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/dropshipper-settings/:id",
+      "handler": "dropshipper-settings.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/dropshipper-settings/:id",
+      "handler": "dropshipper-settings.delete",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/invite/:inviteCode",
+      "handler": "dropshipper-settings.acceptInvitation",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

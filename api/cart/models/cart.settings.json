@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "carts",
+  "info": {
+    "name": "Cart",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dropshipper_setting": {
+      "model": "dropshipper-settings"
+    },
+    "supplier_setting": {
+      "model": "supplier-settings"
+    },
+    "product_orders": {
+      "collection": "product-order",
+      "via": "cart"
+    }
+  }
+}
