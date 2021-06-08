@@ -9,9 +9,25 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/carts/addToCart",
+      "handler": "cart.addToCard",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "GET",
-      "path": "/carts/count",
-      "handler": "cart.count",
+      "path": "/carts/price",
+      "handler": "cart.price",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/carts/createOrder",
+      "handler": "cart.createOrder",
       "config": {
         "policies": []
       }

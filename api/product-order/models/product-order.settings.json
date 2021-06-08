@@ -20,6 +20,10 @@
     "cart": {
       "via": "product_orders",
       "model": "cart"
+    },
+    "order": {
+      "via": "product_orders",
+      "model": "order"
     }
   }
 }

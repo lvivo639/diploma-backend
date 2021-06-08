@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "name": "Order",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "dropshipper_setting": {
+      "model": "dropshipper-settings"
+    },
+    "supplier_setting": {
+      "model": "supplier-settings"
+    },
+    "address": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "fullName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "packaging",
+        "sent",
+        "received",
+        "sentBack"
+      ],
+      "default": "packaging"
+    },
+    "product_orders": {
+      "collection": "product-order",
+      "via": "order"
+    },
+    "price": {
+      "type": "integer"
+    }
+  }
+}

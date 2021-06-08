@@ -10,6 +10,22 @@
     },
     {
       "method": "GET",
+      "path": "/product-orders/findProductOrders",
+      "handler": "product-order.findProductOrders",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/product-orders/changeCount/:id",
+      "handler": "product-order.changeCount",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/product-orders/count",
       "handler": "product-order.count",
       "config": {

@@ -1,6 +1,6 @@
 {
   "paths": {
-    "/product-orders": {
+    "/orders": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -10,10 +10,9 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
                   }
                 }
               }
@@ -52,7 +51,7 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
+          "Order"
         ],
         "parameters": [
           {
@@ -202,11 +201,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -244,7 +239,7 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
+          "Order"
         ],
         "requestBody": {
           "description": "",
@@ -252,14 +247,14 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProduct-order"
+                "$ref": "#/components/schemas/NewOrder"
               }
             }
           }
         }
       }
     },
-    "/product-orders/findProductOrders": {
+    "/orders/count": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -270,8 +265,8 @@
               "application/json": {
                 "schema": {
                   "properties": {
-                    "foo": {
-                      "type": "string"
+                    "count": {
+                      "type": "integer"
                     }
                   }
                 }
@@ -311,83 +306,12 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
+          "Order"
         ],
         "parameters": []
       }
     },
-    "/product-orders/changeCount/{id}": {
-      "post": {
-        "deprecated": false,
-        "description": "Create a new record",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Product-order"
-        ],
-        "requestBody": {
-          "description": "",
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "properties": {
-                  "foo": {
-                    "type": "string"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/product-orders/count": {
+    "/orders/{id}": {
       "get": {
         "deprecated": false,
         "description": "",
@@ -397,11 +321,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -439,64 +359,7 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
-        ],
-        "parameters": []
-      }
-    },
-    "/product-orders/{id}": {
-      "get": {
-        "deprecated": false,
-        "description": "",
-        "responses": {
-          "200": {
-            "description": "response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "unexpected error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          }
-        },
-        "summary": "",
-        "tags": [
-          "Product-order"
+          "Order"
         ],
         "parameters": [
           {
@@ -520,11 +383,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "properties": {
-                    "foo": {
-                      "type": "string"
-                    }
-                  }
+                  "$ref": "#/components/schemas/Order"
                 }
               }
             }
@@ -562,7 +421,7 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
+          "Order"
         ],
         "requestBody": {
           "description": "",
@@ -570,7 +429,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/NewProduct-order"
+                "$ref": "#/components/schemas/NewOrder"
               }
             }
           }
@@ -636,7 +495,7 @@
         },
         "summary": "",
         "tags": [
-          "Product-order"
+          "Order"
         ],
         "parameters": [
           {
@@ -655,7 +514,7 @@
   },
   "components": {
     "schemas": {
-      "Product-order": {
+      "Order": {
         "required": [
           "id"
         ],
@@ -663,40 +522,21 @@
           "id": {
             "type": "string"
           },
-          "product": {
+          "dropshipper_setting": {
             "required": [
-              "id",
-              "name",
-              "description",
-              "price",
-              "count"
+              "id"
             ],
             "properties": {
               "id": {
                 "type": "string"
               },
-              "name": {
-                "type": "string"
+              "supplier_settings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               },
-              "image": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "price": {
-                "type": "integer"
-              },
-              "oldPrice": {
-                "type": "integer"
-              },
-              "count": {
-                "type": "integer"
-              },
-              "supplier_setting": {
-                "type": "string"
-              },
-              "published_at": {
+              "users_permissions_user": {
                 "type": "string"
               },
               "created_by": {
@@ -707,101 +547,133 @@
               }
             }
           },
-          "count": {
+          "supplier_setting": {
+            "required": [
+              "id"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "users_permissions_user": {
+                "type": "string"
+              },
+              "storageName": {
+                "type": "string"
+              },
+              "uniqueHash": {
+                "type": "string"
+              },
+              "dropshipper_settings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "header": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "created_by": {
+                "type": "string"
+              },
+              "updated_by": {
+                "type": "string"
+              }
+            }
+          },
+          "address": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "packaging",
+            "enum": [
+              "packaging",
+              "sent",
+              "received",
+              "sentBack"
+            ]
+          },
+          "product_orders": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "product": {
+                  "type": "string"
+                },
+                "count": {
+                  "type": "integer"
+                },
+                "cart": {
+                  "type": "string"
+                },
+                "order": {
+                  "type": "string"
+                },
+                "created_by": {
+                  "type": "string"
+                },
+                "updated_by": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "price": {
             "type": "integer"
-          },
-          "cart": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "dropshipper_setting": {
-                "type": "string"
-              },
-              "supplier_setting": {
-                "type": "string"
-              },
-              "product_orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
-          },
-          "order": {
-            "required": [
-              "id"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "dropshipper_setting": {
-                "type": "string"
-              },
-              "supplier_setting": {
-                "type": "string"
-              },
-              "address": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "fullName": {
-                "type": "string"
-              },
-              "status": {
-                "type": "string",
-                "enum": [
-                  "packaging",
-                  "sent",
-                  "received",
-                  "sentBack"
-                ]
-              },
-              "product_orders": {
-                "type": "array",
-                "items": {
-                  "type": "string"
-                }
-              },
-              "price": {
-                "type": "integer"
-              },
-              "created_by": {
-                "type": "string"
-              },
-              "updated_by": {
-                "type": "string"
-              }
-            }
           }
         }
       },
-      "NewProduct-order": {
+      "NewOrder": {
         "properties": {
-          "product": {
+          "dropshipper_setting": {
             "type": "string"
           },
-          "count": {
+          "supplier_setting": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "fullName": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "default": "packaging",
+            "enum": [
+              "packaging",
+              "sent",
+              "received",
+              "sentBack"
+            ]
+          },
+          "product_orders": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "price": {
             "type": "integer"
-          },
-          "cart": {
-            "type": "string"
-          },
-          "order": {
-            "type": "string"
           },
           "created_by": {
             "type": "string"
@@ -813,5 +685,9 @@
       }
     }
   },
-  "tags": []
+  "tags": [
+    {
+      "name": "Order"
+    }
+  ]
 }
