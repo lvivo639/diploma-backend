@@ -67,6 +67,7 @@ module.exports = {
       product: product.id,
       cart: cart.id,
       count: 1,
+      price: product.price,
     });
   },
   async price(ctx) {

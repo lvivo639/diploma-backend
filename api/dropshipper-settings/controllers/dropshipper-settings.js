@@ -1,5 +1,7 @@
 "use strict";
 
+const { balance } = require("../services/dropshipper-settings");
+
 /**
  * Read the documentation (https://strapi.io/documentation/developer-docs/latest/development/backend-customization.html#core-controllers)
  * to customize this controller
@@ -37,5 +39,19 @@ module.exports = {
     }
 
     return supplier.id;
+  },
+
+  async balance(ctx) {
+    const { dropshipper_setting_id, supplier_setting_id } = ctx.query;
+
+    if (dropshipper_setting_id === undefined)
+      return ctx.badRequest("dropshipper_setting_id is requred");
+    if (supplier_setting_id === undefined)
+      return ctx.badRequest("supplier_setting_id is requred");
+
+    return await strapi.services["dropshipper-settings"].balance(
+      dropshipper_setting_id,
+      supplier_setting_id
+    );
   },
 };

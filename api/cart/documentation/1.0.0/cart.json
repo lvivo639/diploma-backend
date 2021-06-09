@@ -748,6 +748,9 @@
                 "order": {
                   "type": "string"
                 },
+                "price": {
+                  "type": "integer"
+                },
                 "created_by": {
                   "type": "string"
                 },

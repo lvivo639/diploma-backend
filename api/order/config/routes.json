@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/orders/my",
+      "handler": "order.my",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/orders/count",
       "handler": "order.count",
       "config": {

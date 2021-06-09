@@ -1,8 +1,8 @@
 {
   "kind": "collectionType",
-  "collectionName": "carts",
+  "collectionName": "payments",
   "info": {
-    "name": "Cart",
+    "name": "payment",
     "description": ""
   },
   "options": {
@@ -12,15 +12,17 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "dropshipper_setting": {
-      "model": "dropshipper-settings"
+    "amount": {
+      "type": "integer"
+    },
+    "paymentDateTime": {
+      "type": "datetime"
     },
     "supplier_setting": {
       "model": "supplier-settings"
     },
-    "product_orders": {
-      "via": "cart",
-      "collection": "product-order"
+    "dropshipper_setting": {
+      "model": "dropshipper-settings"
     }
   }
 }

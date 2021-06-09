@@ -38,8 +38,8 @@
       "default": "packaging"
     },
     "product_orders": {
-      "collection": "product-order",
-      "via": "order"
+      "via": "order",
+      "collection": "product-order"
     },
     "price": {
       "type": "integer"

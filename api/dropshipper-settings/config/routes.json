@@ -10,6 +10,14 @@
     },
     {
       "method": "GET",
+      "path": "/dropshipper-settings/balance",
+      "handler": "dropshipper-settings.balance",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/dropshipper-settings/count",
       "handler": "dropshipper-settings.count",
       "config": {
