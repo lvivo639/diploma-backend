@@ -8,6 +8,7 @@
 
 /* eslint-disable no-useless-escape */
 const { sanitizeEntity } = require("strapi-utils");
+const generateString = require("../../../common/generateString");
 
 const emailRegExp =
   /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -140,21 +141,25 @@ module.exports = {
     const jwt = strapi.plugins["users-permissions"].services.jwt.issue({
       id: user.id,
     });
-
-    if (role === "supplier") {
+    if (role.type === "supplier") {
       await strapi.query("supplier-settings").create({
-        storageName: generageString(10),
-        uniqueHash: generageString(18),
+        storageName: generateString(10),
+        uniqueHash: generateString(18),
         users_permissions_user: sanitizedUser.id,
       });
-    } else if (role === "dropshipper") {
+    } else if (role.type === "dropshipper") {
       await strapi.query("dropshipper-settings").create({
         users_permissions_user: sanitizedUser.id,
       });
-    } else
-      return ctx.send({
-        jwt,
-        user: sanitizedUser,
-      });
+    }
+
+    const newUserDB = await strapi
+      .query("user", "users-permissions")
+      .findOne({ id: sanitizedUser.id });
+
+    return ctx.send({
+      jwt,
+      user: newUserDB,
+    });
   },
 };

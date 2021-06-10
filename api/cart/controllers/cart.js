@@ -50,18 +50,18 @@ module.exports = {
       supplier_setting: supplier_setting_id,
     });
 
-    const productOrder = cart.product_orders.find(
-      (po) => po.product === product.id
-    );
-
-    if (productOrder) return productOrder;
-
     if (!cart) {
       cart = await strapi.query("cart").create({
         dropshipper_setting: dropshipper_setting_id,
         supplier_setting: supplier_setting_id,
       });
     }
+
+    const productOrder = cart.product_orders.find(
+      (po) => po.product === product.id
+    );
+
+    if (productOrder) return productOrder;
 
     return await strapi.query("product-order").create({
       product: product.id,
