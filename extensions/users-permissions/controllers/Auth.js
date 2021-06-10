@@ -150,6 +150,7 @@ module.exports = {
     } else if (role.type === "dropshipper") {
       await strapi.query("dropshipper-settings").create({
         users_permissions_user: sanitizedUser.id,
+        telegramCode: generateString(24),
       });
     }
 

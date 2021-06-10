@@ -66,6 +66,12 @@
     "dropshipper_setting": {
       "via": "users_permissions_user",
       "model": "dropshipper-settings"
+    },
+    "firstName": {
+      "type": "string"
+    },
+    "lastName": {
+      "type": "string"
     }
   }
 }

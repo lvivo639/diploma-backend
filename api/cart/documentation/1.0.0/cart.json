@@ -681,6 +681,21 @@
               "users_permissions_user": {
                 "type": "string"
               },
+              "telegramUsername": {
+                "type": "string"
+              },
+              "phoneNumber": {
+                "type": "string"
+              },
+              "cardNumber": {
+                "type": "string"
+              },
+              "telegramId": {
+                "type": "integer"
+              },
+              "telegramCode": {
+                "type": "string"
+              },
               "created_by": {
                 "type": "string"
               },

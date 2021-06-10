@@ -18,10 +18,24 @@
       "dominant": true
     },
     "users_permissions_user": {
-      "unique": true,
+      "via": "dropshipper_setting",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "dropshipper_setting"
+      "model": "user"
+    },
+    "telegramUsername": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "cardNumber": {
+      "type": "string"
+    },
+    "telegramId": {
+      "type": "integer"
+    },
+    "telegramCode": {
+      "type": "string"
     }
   }
 }

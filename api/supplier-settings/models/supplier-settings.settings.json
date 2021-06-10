@@ -13,10 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "users_permissions_user": {
-      "unique": true,
+      "via": "supplier_setting",
       "plugin": "users-permissions",
-      "model": "user",
-      "via": "supplier_setting"
+      "model": "user"
     },
     "storageName": {
       "type": "string"
