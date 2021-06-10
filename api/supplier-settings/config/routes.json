@@ -26,6 +26,14 @@
     },
     {
       "method": "GET",
+      "path": "/supplier-settings/payments",
+      "handler": "supplier-settings.payments",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/supplier-settings/users/:supplier_setting_id",
       "handler": "supplier-settings.users",
       "config": {
@@ -50,8 +58,16 @@
     },
     {
       "method": "POST",
-      "path": "/supplier-settings/changeStatus/:order_id",
-      "handler": "supplier-settings.changeStatus",
+      "path": "/supplier-settings/changeOrderStatus/:order_id",
+      "handler": "supplier-settings.changeOrderStatus",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/supplier-settings/changePaymentStatus/:payment_id",
+      "handler": "supplier-settings.changePaymentStatus",
       "config": {
         "policies": []
       }

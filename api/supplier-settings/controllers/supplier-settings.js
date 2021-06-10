@@ -77,7 +77,7 @@ module.exports = {
     return orderList;
   },
 
-  async changeStatus(ctx) {
+  async changeOrderStatus(ctx) {
     if (!ctx.state.user || ctx.state.user.supplier_setting === undefined) {
       return ctx.badRequest("user is not supplier");
     }
@@ -93,13 +93,55 @@ module.exports = {
       return ctx.badRequest("status is requred");
     }
 
-    console.log(order_id, status);
-
     return await strapi
       .query("order")
       .update(
         { id: order_id, supplier_setting: ctx.state.user.supplier_setting },
         { status: status }
       );
+  },
+
+  async payments(ctx) {
+    if (!ctx.state.user || ctx.state.user.supplier_setting === undefined) {
+      return ctx.badRequest("user is not supplier");
+    }
+
+    const paymentList = await strapi
+      .query("payment")
+      .find({ supplier_setting: ctx.state.user.supplier_setting });
+
+    return paymentList;
+  },
+
+  async changePaymentStatus(ctx) {
+    if (!ctx.state.user || ctx.state.user.supplier_setting === undefined) {
+      return ctx.badRequest("user is not supplier");
+    }
+    const { payment_id } = ctx.params;
+
+    if (payment_id === undefined) {
+      return ctx.badRequest("payment_id is requred");
+    }
+
+    const payment = await strapi.query("payment").findOne({
+      id: payment_id,
+      supplier_setting: ctx.state.user.supplier_setting,
+    });
+
+    if (payment === undefined) {
+      return ctx.notFound("payment not found");
+    }
+    const updated = await strapi
+      .query("payment")
+      .update(
+        { id: payment_id },
+        {
+          paymentDateTime: payment.paymentDateTime
+            ? null
+            : new Date().getTime(),
+        }
+      );
+
+    return updated.paymentDateTime || "";
   },
 };
