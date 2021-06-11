@@ -28,6 +28,34 @@
           "actionType": "create"
         }
       }
+    },
+    {
+      "method": "POST",
+      "path": "/user/settings",
+      "handler": "User.settings",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Login a user using the identifiers email and password",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/user/changePassword",
+      "handler": "User.changePassword",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Login a user using the identifiers email and password",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User"
+        }
+      }
     }
   ]
 }
