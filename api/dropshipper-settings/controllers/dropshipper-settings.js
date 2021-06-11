@@ -54,4 +54,23 @@ module.exports = {
       supplier_setting_id
     );
   },
+
+  async settings(ctx) {
+    const { telegramUsername, phoneNumber, cardNumber } = ctx.request.body;
+
+    if (!telegramUsername)
+      return ctx.badRequest("telegramUsername is required");
+    if (!phoneNumber) return ctx.badRequest("phoneNumber is required");
+    if (!cardNumber) return ctx.badRequest("cardNumber is required");
+
+    if (!ctx.state.user.dropshipper_setting)
+      return ctx.notFound("dropshipper not found is required");
+
+    return await strapi
+      .query("dropshipper-settings")
+      .update(
+        { id: ctx.state.user.dropshipper_setting },
+        { telegramUsername, phoneNumber, cardNumber }
+      );
+  },
 };

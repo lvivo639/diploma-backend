@@ -42,4 +42,14 @@ module.exports = {
       .query("user", "users-permissions")
       .update({ id: ctx.state.user.id }, { updatedPassword });
   },
+
+  async fetchAuthenticatedUser(ctx) {
+    return strapi
+      .query("user", "users-permissions")
+      .findOne({ id: ctx.state.user.id }, [
+        "supplier_setting",
+        "dropshipper_setting",
+        "role",
+      ]);
+  },
 };

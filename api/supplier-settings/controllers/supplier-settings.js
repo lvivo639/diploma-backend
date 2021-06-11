@@ -5,6 +5,7 @@
  * to customize this controller
  */
 
+const generateString = require("../../../common/generateString");
 module.exports = {
   async users(ctx) {
     const { supplier_setting_id } = ctx.params;
@@ -131,17 +132,36 @@ module.exports = {
     if (payment === undefined) {
       return ctx.notFound("payment not found");
     }
-    const updated = await strapi
-      .query("payment")
-      .update(
-        { id: payment_id },
-        {
-          paymentDateTime: payment.paymentDateTime
-            ? null
-            : new Date().getTime(),
-        }
-      );
+    const updated = await strapi.query("payment").update(
+      { id: payment_id },
+      {
+        paymentDateTime: payment.paymentDateTime ? null : new Date().getTime(),
+      }
+    );
 
     return updated.paymentDateTime || "";
+  },
+
+  async settings(ctx) {
+    const { storageName, description } = ctx.request.body;
+
+    if (!storageName) return ctx.badRequest("storageName is required");
+    if (!description) return ctx.badRequest("description is required");
+
+    return await strapi
+      .query("supplier-settings")
+      .update(
+        { id: ctx.state.user.supplier_setting },
+        { storageName, description }
+      );
+  },
+
+  async changeUniqueHash(ctx) {
+    return await strapi.query("supplier-settings").update(
+      { id: ctx.state.user.supplier_setting },
+      {
+        uniqueHash: generateString(18),
+      }
+    );
   },
 };

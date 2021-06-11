@@ -41,6 +41,14 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/dropshipper-settings/settings",
+      "handler": "dropshipper-settings.settings",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/dropshipper-settings/:id",
       "handler": "dropshipper-settings.update",

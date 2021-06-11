@@ -73,6 +73,22 @@
       }
     },
     {
+      "method": "POST",
+      "path": "/supplier-settings/changeUniqueHash",
+      "handler": "supplier-settings.changeUniqueHash",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/supplier-settings/settings",
+      "handler": "supplier-settings.settings",
+      "config": {
+        "policies": []
+      }
+    },
+    {
       "method": "PUT",
       "path": "/supplier-settings/:id",
       "handler": "supplier-settings.update",

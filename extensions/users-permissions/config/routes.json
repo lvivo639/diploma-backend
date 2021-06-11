@@ -56,6 +56,20 @@
           "name": "User"
         }
       }
+    },
+    {
+      "method": "GET",
+      "path": "/users/fetchAuthenticatedUser",
+      "handler": "User.fetchAuthenticatedUser",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Login a user using the identifiers email and password",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User"
+        }
+      }
     }
   ]
 }
