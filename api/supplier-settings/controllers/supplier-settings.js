@@ -6,6 +6,8 @@
  */
 
 const generateString = require("../../../common/generateString");
+const sendTelegramRequest = require("../../../common/sendTelegramRequest");
+
 module.exports = {
   async users(ctx) {
     const { supplier_setting_id } = ctx.params;
@@ -163,5 +165,29 @@ module.exports = {
         uniqueHash: generateString(18),
       }
     );
+  },
+
+  async sendNewsletter(ctx) {
+    const { text } = ctx.request.body;
+    const supplier = await strapi
+      .query("supplier-settings")
+      .findOne({ id: ctx.state.user.supplier_setting });
+
+    const msgText = `You have message by ${supplier.storageName}\n\n${text}`;
+
+    for (const dropshipper of supplier.dropshipper_settings || []) {
+      if (dropshipper.telegramId) {
+        try {
+          sendTelegramRequest("sendMessage", {
+            chat_id: dropshipper.telegramId,
+            text: msgText,
+          });
+        } catch (e) {
+          continue;
+        }
+      }
+    }
+
+    return true;
   },
 };

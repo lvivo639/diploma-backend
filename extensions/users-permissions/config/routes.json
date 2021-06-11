@@ -70,6 +70,35 @@
           "name": "User"
         }
       }
+    },
+
+    {
+      "method": "GET",
+      "path": "/changeTelegamWebhook",
+      "handler": "Telegram.changeTelegamWebhook",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Login a user using the identifiers email and password",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User"
+        }
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/telegramWebhook",
+      "handler": "Telegram.telegramWebhook",
+      "config": {
+        "policies": [],
+        "prefix": "",
+        "description": "Login a user using the identifiers email and password",
+        "tag": {
+          "plugin": "users-permissions",
+          "name": "User"
+        }
+      }
     }
   ]
 }

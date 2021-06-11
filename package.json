@@ -13,6 +13,7 @@
     "babel-eslint": "^10.1.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "knex": "0.21.18",
     "pg": "^8.6.0",
     "sqlite3": "5.0.0",
