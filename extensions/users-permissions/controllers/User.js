@@ -48,6 +48,7 @@ module.exports = {
       .query("user", "users-permissions")
       .findOne({ id: ctx.state.user.id }, [
         "supplier_setting",
+        "supplier_setting.header",
         "dropshipper_setting",
         "role",
       ]);
